@@ -59,8 +59,9 @@ export default {
                                                                 },
                                                                 on: {
                                                                         click: () => {
-                                                                                //this.show(params.index)
-                                                                                this.$router.push({ path: `/deatails` })
+                                                                                //mCheck.singleShow(params.row);
+                                                                                this.show(params.index)
+                                                                                //this.$router.push({ path: `/deatails` })
                                                                         }
                                                                 }
                                                         }, '详情'),
@@ -132,12 +133,13 @@ export default {
         methods: {
                 show(index) {
                         this.$Modal.info({
-                                title: 'User Info',
-                                content: `Name：${this.data6[index].name}<br>Age：${this.data6[index].age}<br>Address：${this.data6[index].address}`
+                                title: '详细信息',
+                                content: `编号：${this.datals[index].munber}<br>单位名称：${this.datals[index].entity}<br>联系电话：${this.datals[index].contact}<br>需求人数：${this.datals[index].requirements}<br>地址：${this.datals[index].place}<br>时间：${this.datals[index].time}<br>预算费用：${this.datals[index].budget}`
                         })
                 },
                 remove(index) {
-                        this.data6.splice(index, 1);
+                        //this.datals.splice(index, 1);
+                        this.$router.push({ path: `/deatails` })
                 }
         }
 
