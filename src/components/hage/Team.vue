@@ -15,17 +15,75 @@
 export default {
         data() {
                 return {
-                        select3: '',
-                        option: [
+                        datals: [
+                                {
+                                        id: 901,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59',
+                                        budget: '500￥'
+                                },
+                                {
+                                        munber: 902,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59~2018.6.6',
+                                        budget: '500￥'
+                                },
+                                {
+                                        munber: 903,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59',
+                                        budget: '500￥'
+                                },
+                                {
+                                        munber: 904,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59',
+                                        budget: '500￥'
+                                },
+                                {
+                                        munber: 905,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59',
+                                        budget: '500￥'
+                                },
+
                         ],
+                        tensy: [],
                         team: [
                                 {
                                         title: '编号',
-                                        key: 'munber',
+                                        key: 'id',
                                 },
                                 {
-                                        title: '单位名称',
-                                        key: 'entity',
+                                        title: 'ID',
+                                        key: 'id',
+                                        render: (h, params) => {
+                                                return h('div', [
+                                                        h('Input', {
+                                                                props: this.tensy[params.index].id,
+                                                                on: {
+                                                                        input: function (event) {
+                                                                                this.tensy[params.index].id = event;
+                                                                        }
+                                                                }
+                                                        })
+                                                ])
+                                        }
                                 },
                                 {
                                         title: '联系方式',
@@ -85,54 +143,7 @@ export default {
                                         }
                                 }
                         ],
-                        datals: [
-                                {
-                                        munber: 901,
-                                        entity: '北京红红火火有限科技公司',
-                                        contact: 15966668888,
-                                        requirements: 66,
-                                        place: '北京市海定区长白山顶',
-                                        time: '2017.12.13-10:59',
-                                        budget: '500￥'
-                                },
-                                {
-                                        munber: 902,
-                                        entity: '北京红红火火有限科技公司',
-                                        contact: 15966668888,
-                                        requirements: 66,
-                                        place: '北京市海定区长白山顶',
-                                        time: '2017.12.13-10:59~2018.6.6',
-                                        budget: '500￥'
-                                },
-                                {
-                                        munber: 903,
-                                        entity: '北京红红火火有限科技公司',
-                                        contact: 15966668888,
-                                        requirements: 66,
-                                        place: '北京市海定区长白山顶',
-                                        time: '2017.12.13-10:59',
-                                        budget: '500￥'
-                                },
-                                {
-                                        munber: 904,
-                                        entity: '北京红红火火有限科技公司',
-                                        contact: 15966668888,
-                                        requirements: 66,
-                                        place: '北京市海定区长白山顶',
-                                        time: '2017.12.13-10:59',
-                                        budget: '500￥'
-                                },
-                                {
-                                        munber: 905,
-                                        entity: '北京红红火火有限科技公司',
-                                        contact: 15966668888,
-                                        requirements: 66,
-                                        place: '北京市海定区长白山顶',
-                                        time: '2017.12.13-10:59',
-                                        budget: '500￥'
-                                },
 
-                        ]
                 }
         },
         methods: {
@@ -149,8 +160,28 @@ export default {
                 },
                 changePage() {
                         alert(123)
+                },
+                better() {
+
+                        const input = (h, parmas, index) => {
+                                return h('Input', {
+                                        props: {
+                                                type: 'text',
+                                                size: 'large'
+                                        },
+                                        style: {
+                                                marginRight: '5px'
+                                        },
+                                        on: {
+                                                click: () => {
+
+                                                }
+                                        }
+                                })
+                        }
                 }
-        }
+        },
+
 }
 
 </script>
