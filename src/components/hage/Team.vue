@@ -15,6 +15,7 @@
 export default {
         data() {
                 return {
+                        _this: '',
                         datals: [
                                 {
                                         id: 901,
@@ -75,14 +76,36 @@ export default {
                                         render: (h, params) => {
                                                 return h('div', [
                                                         h('Input', {
-                                                                props: this.tensy[params.index].id,
+                                                                props: {
+                                                                        type: 'text',
+                                                                        size: 'small'
+                                                                },
+                                                                style: {
+                                                                        marginRight: '5px'
+                                                                },
                                                                 on: {
-                                                                        input: function (event) {
-                                                                                this.tensy[params.index].id = event;
+                                                                        "on-enter": () => {
+                                                                                console.log(123)
+                                                                        },
+                                                                        "on-focus"() {
+                                                                                console.log(111, params)
                                                                         }
                                                                 }
                                                         })
                                                 ])
+                                                /* // console.log(111, this)
+                                                let _this = this;
+                                                console.log(222, _this.datals[params.index].id);
+                                                // return h('div', [
+                                                //         h('Input', {
+                                                //                 props: _this.tensy[params.index].id,
+                                                //                 on: {
+                                                //                         input: function (event) {
+                                                //                                 _this.tensy[params.index].id = event;
+                                                //                         }
+                                                //                 }
+                                                //         })
+                                                // ]) */
                                         }
                                 },
                                 {
@@ -146,7 +169,14 @@ export default {
 
                 }
         },
+        created() {
+                this.flot()
+        },
         methods: {
+                flot() {
+                        this._this = this;
+                        console.log(this._this);
+                },
                 show(index) {
                         this.$Modal.info({
                                 title: '详细信息',
@@ -181,7 +211,11 @@ export default {
                         }
                 }
         },
-
+        watch: {
+                tensy1(event) {
+                        this.datals = event;
+                }
+        }
 }
 
 </script>
