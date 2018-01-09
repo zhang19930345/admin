@@ -2,10 +2,12 @@
 
 </style>
 <template>
-
         <div class="team-box">
-                <div>
-                        <Table border :columns="team" :data="datals"></Table>
+                <Table border :columns="team" :data="datals"></Table>
+                <div style="margin: 10px;overflow: hidden">
+                        <div style="float: right;">
+                                <Page :total="100" :current="1" @on-change="changePage"></Page>
+                        </div>
                 </div>
         </div>
 </template>
@@ -13,6 +15,9 @@
 export default {
         data() {
                 return {
+                        select3: '',
+                        option: [
+                        ],
                         team: [
                                 {
                                         title: '编号',
@@ -20,7 +25,7 @@ export default {
                                 },
                                 {
                                         title: '单位名称',
-                                        key: 'entity'
+                                        key: 'entity',
                                 },
                                 {
                                         title: '联系方式',
@@ -72,7 +77,7 @@ export default {
                                                                 },
                                                                 on: {
                                                                         click: () => {
-                                                                                this.remove(params.index)
+                                                                                console.log(this.team)
                                                                         }
                                                                 }
                                                         }, '编辑')
@@ -139,10 +144,14 @@ export default {
                 },
                 remove(index) {
                         //this.datals.splice(index, 1);
-                        this.$router.push({ path: `/deatails` })
+                        //this.$router.push({ path: `/deatails` })
+
+                },
+                changePage() {
+                        alert(123)
                 }
         }
-
 }
+
 </script>
 
