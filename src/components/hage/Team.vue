@@ -2,23 +2,43 @@
 
 </style>
 <template>
-        <div class="team-box">
-                <Table border :columns="team" :data="datals"></Table>
-                <div style="margin: 10px;overflow: hidden">
-                        <div style="float: right;">
-                                <Page :total="100" :current="1" @on-change="changePage"></Page>
+        <div class="team_card">
+                <Card class="team-box">
+                        <div slot="title">团队组建</div>
+                        <Row style="margin-bottom:15px;">
+                                <Col span="8">
+                                <Select>
+                                        <Option v-for="item in state" :value="item.value" :key="item.value" @on-change="changeState">{{item.label}}</Option>
+                                </Select>
+                                </Col>
+                                <Col span="8">
+                                <Select>
+                                        <Option v-for="item in seach" :value="item.value" :key="item.value">{{item.label}}</Option>
+                                </Select>
+                                </Col>
+                                <Col span="8">
+                                <Select v-model="model13" placeholder="请输入手机号码" filterable :remote-method="remoteMethod1" :loading="loading1">
+                                        <Option v-for="(option, index) in options1" :value="option.value" :key="index">{{option.label}}</Option>
+                                </Select>
+                                </Col>
+                        </Row>
+                        <Table border :columns="team" :data="datals"></Table>
+                        <div style="margin: 10px;overflow: hidden">
+                                <div style="float: right;">
+                                        <Page :total="100" :current="1" @on-change="changePage"></Page>
+                                </div>
                         </div>
-                </div>
+                </Card>
         </div>
 </template>
 <script>
+import expandRow from './Table.vue'
 export default {
         data() {
                 return {
-                        _this: '',
                         datals: [
                                 {
-                                        id: 901,
+                                        munber: 901,
                                         id: '北京红红火火有限科技公司',
                                         contact: 15966668888,
                                         requirements: 66,
@@ -64,49 +84,27 @@ export default {
                                 },
 
                         ],
-                        tensy: [],
                         team: [
                                 {
-                                        title: '编号',
-                                        key: 'id',
+                                        title: '详情',
+                                        type: 'expand',
+                                        width: 100,
+                                        render: (h, params) => {
+                                                return h(expandRow, {
+                                                        props: {
+                                                                row: params.row
+                                                        }
+                                                })
+                                        }
                                 },
                                 {
-                                        title: 'ID',
-                                        key: 'id',
-                                        render: (h, params) => {
-                                                return h('div', [
-                                                        h('Input', {
-                                                                props: {
-                                                                        type: 'text',
-                                                                        size: 'small'
-                                                                },
-                                                                style: {
-                                                                        marginRight: '5px'
-                                                                },
-                                                                on: {
-                                                                        "on-enter": () => {
-                                                                                console.log(123)
-                                                                        },
-                                                                        "on-focus"() {
-                                                                                console.log(111, params)
-                                                                        }
-                                                                }
-                                                        })
-                                                ])
-                                                /* // console.log(111, this)
-                                                let _this = this;
-                                                console.log(222, _this.datals[params.index].id);
-                                                // return h('div', [
-                                                //         h('Input', {
-                                                //                 props: _this.tensy[params.index].id,
-                                                //                 on: {
-                                                //                         input: function (event) {
-                                                //                                 _this.tensy[params.index].id = event;
-                                                //                         }
-                                                //                 }
-                                                //         })
-                                                // ]) */
-                                        }
+                                        title: '编号',
+                                        width: 100,
+                                        key: 'munber',
+                                },
+                                {
+                                        title: '公司地址',
+                                        key: 'id'
                                 },
                                 {
                                         title: '联系方式',
@@ -114,6 +112,7 @@ export default {
                                 },
                                 {
                                         title: '需求人数',
+                                        width: 100,
                                         key: 'requirements'
                                 },
                                 {
@@ -126,6 +125,7 @@ export default {
                                 },
                                 {
                                         title: '预算',
+                                        width: 150,
                                         key: 'budget'
                                 },
                                 {
@@ -135,22 +135,6 @@ export default {
                                         align: 'center',
                                         render: (h, params) => {
                                                 return h('div', [
-                                                        h('Button', {
-                                                                props: {
-                                                                        type: 'primary',
-                                                                        size: 'small'
-                                                                },
-                                                                style: {
-                                                                        marginRight: '5px'
-                                                                },
-                                                                on: {
-                                                                        click: () => {
-                                                                                //mCheck.singleShow(params.row);
-                                                                                this.show(params.index)
-                                                                                //this.$router.push({ path: `/deatails` })
-                                                                        }
-                                                                }
-                                                        }, '详情'),
                                                         h('Button', {
                                                                 props: {
                                                                         type: 'error',
@@ -166,23 +150,47 @@ export default {
                                         }
                                 }
                         ],
-
+                        seach: [
+                                {
+                                        value: '今天',
+                                        label: '今天'
+                                },
+                                {
+                                        value: '最近3天',
+                                        label: '最近3天'
+                                },
+                                {
+                                        value: '最近7天',
+                                        label: '最近7天'
+                                },
+                                {
+                                        value: '最近半月',
+                                        label: '最近半月'
+                                },
+                                {
+                                        value: '最近一个月',
+                                        label: '最近一个月'
+                                }
+                        ],
+                        state: [
+                                {
+                                        value: '代组建',
+                                        label: '代组建'
+                                },
+                                {
+                                        value: '已组建',
+                                        label: '已组建'
+                                }
+                        ],
+                        model13: '',
+                        loading1: false,
+                        options1: [],
                 }
         },
         created() {
-                this.flot()
+
         },
         methods: {
-                flot() {
-                        this._this = this;
-                        console.log(this._this);
-                },
-                show(index) {
-                        this.$Modal.info({
-                                title: '详细信息',
-                                content: `编号：${this.datals[index].munber}<br>单位名称：${this.datals[index].entity}<br>联系电话：${this.datals[index].contact}<br>需求人数：${this.datals[index].requirements}<br>地址：${this.datals[index].place}<br>时间：${this.datals[index].time}<br>预算费用：${this.datals[index].budget}`
-                        })
-                },
                 remove(index) {
                         //this.datals.splice(index, 1);
                         //this.$router.push({ path: `/deatails` })
@@ -191,32 +199,29 @@ export default {
                 changePage() {
                         alert(123)
                 },
-                better() {
-
-                        const input = (h, parmas, index) => {
-                                return h('Input', {
-                                        props: {
-                                                type: 'text',
-                                                size: 'large'
-                                        },
-                                        style: {
-                                                marginRight: '5px'
-                                        },
-                                        on: {
-                                                click: () => {
-
-                                                }
-                                        }
-                                })
+                changeState() {
+                        alert(123)
+                },
+                remoteMethod1(query) {
+                        if (query !== '') {
+                                this.loading1 = true;
+                                setTimeout(() => {
+                                        this.loading1 = false;
+                                        const list = this.list.map(item => {
+                                                return {
+                                                        value: item,
+                                                        label: item
+                                                };
+                                        });
+                                        this.options1 = list.filter(item => item.label.toLowerCase().indexOf(query.toLowerCase()) > -1);
+                                }, 200);
+                        } else {
+                                this.options1 = [];
                         }
-                }
-        },
-        watch: {
-                tensy1(event) {
-                        this.datals = event;
-                }
-        }
-}
+                },
 
+        },
+        components: { expandRow }
+}
 </script>
 
