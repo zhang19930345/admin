@@ -1,11 +1,15 @@
 <style lang="less">
-
+.lest{
+    font-size:20px;
+    font-weight: 600;
+    text-align: left;
+}
 </style>
 <template>
         <div class="team_card">
                 <Card class="team-box">
-                        <div slot="title">团队组建</div>
-                        <Row style="margin-bottom:15px;">
+                        <div slot="title" class="lest">团队组建</div>
+                        <Row :gutter="20" style="margin-bottom:15px;">
                                 <Col span="8">
                                 <Select>
                                         <Option v-for="item in state" :value="item.value" :key="item.value" @on-change="changeState">{{item.label}}</Option>

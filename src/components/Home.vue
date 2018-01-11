@@ -87,13 +87,13 @@
                                                         <router-link :to="{path:``}" class="router-link">新闻管理</router-link>
                                                 </template>
                                                 <MenuItem name="2-1">
-                                                <router-link :to="{path:``}" class="router-link">新闻列表</router-link>
+                                                <router-link :to="{path:`/baio`}" class="router-link">新闻列表</router-link>
                                                 </MenuItem>
                                                 <MenuItem name="2-2">
-                                                <router-link :to="{path:``}" class="router-link">新闻类别</router-link>
+                                                <router-link :to="{path:`/sort`}" class="router-link">新闻类别</router-link>
                                                 </MenuItem>
                                                 <MenuItem name="2-3">
-                                                <router-link :to="{path:``}" class="router-link">添加新闻</router-link>
+                                                <router-link :to="{path:`/page`}" class="router-link">单页面管理</router-link>
                                                 </MenuItem>
                                         </Submenu>
                                         <Submenu name="3">
@@ -105,10 +105,10 @@
                                                 <router-link :to="{path:`/team`}" class="router-link">团队组建</router-link>
                                                 </MenuItem>
                                                 <MenuItem name="3-2">
-                                                <router-link :to="{path:`/deatails`}" class="router-link">浏览记录</router-link>
+                                                <router-link :to="{path:`/feedback`}" class="router-link">订单记录</router-link>
                                                 </MenuItem>
                                                 <MenuItem name="3-3">
-                                                <router-link :to="{path:``}" class="router-link">用户反馈</router-link>
+                                                <router-link :to="{path:`/user`}" class="router-link">用户反馈</router-link>
                                                 </MenuItem>
                                                 <MenuItem name="3-4">
                                                 <router-link :to="{path:``}" class="router-link">用户账号</router-link>
