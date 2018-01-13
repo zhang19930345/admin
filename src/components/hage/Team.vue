@@ -8,7 +8,10 @@
 <template>
         <div class="team_card">
                 <Card class="team-box">
-                        <div slot="title" class="lest">团队组建</div>
+                        <div slot="title" class="lest">
+                                <Icon type="ios-people" size="26"></Icon>
+                                团队组建
+                        </div>
                         <Row :gutter="20" style="margin-bottom:15px;">
                                 <Col span="8">
                                 <Select>
