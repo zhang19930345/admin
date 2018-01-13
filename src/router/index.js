@@ -7,7 +7,7 @@ import User from '@/components/hage/User'
 import Baio from '@/components/news/Baio'
 import Page from '@/components/news/Page'
 import Sort from '@/components/news/Sort'
-
+import Details from '@/components/hage/Details'
 
 
 
@@ -41,6 +41,10 @@ export default new Router({
       {
         path: '/sort',
         component: Sort
+      },
+      {
+        path: '/details',
+        component: Details
       }
       ]
     },

@@ -40,9 +40,16 @@
 </template>
 <script>
 import expandRow from './Table.vue'
+import Modal from './Modal.vue'
 export default {
+        conponent: {
+                Modal
+        },
         data() {
                 return {
+                        v1: '',
+                        v2: "",
+                        v3: '',
                         datals: [
                                 {
                                         munber: 901,
@@ -149,7 +156,8 @@ export default {
                                                                 },
                                                                 on: {
                                                                         click: () => {
-                                                                                console.log(this.team)
+                                                                                //console.log(123)
+                                                                                this.Editor(params.index)
                                                                         }
                                                                 }
                                                         }, '编辑')
@@ -226,6 +234,38 @@ export default {
                                 this.options1 = [];
                         }
                 },
+                Editor(index) {
+                        this.$Modal.confirm({
+                                scrollable: true,
+                                okText: '保存',
+                                render: (h) => {
+                                        return h(Modal, {
+                                                props: {},
+                                                on: {
+                                                        value1: (value1) => {
+                                                                this.v1 = value1
+                                                        },
+                                                        value2: (value2) => {
+                                                                this.v2 = value2
+                                                        },
+                                                        value3: (value3) => {
+                                                                this.v3 = value3
+                                                        }
+                                                },
+                                                onOk: () => {
+                                                        if (this.v1 == '' || this.v2 == '') {
+                                                                this.$Message.error('信息填写不完整!')
+                                                        }
+                                                        const msg = this.$Message.loading({
+                                                                content: '正在保存..',
+                                                                duration: 0
+                                                        })
+                                                        this.saveLink(msg)
+                                                }
+                                        })
+                                }
+                        })
+                }
 
         },
         components: { expandRow }

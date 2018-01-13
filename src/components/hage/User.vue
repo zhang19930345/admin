@@ -50,8 +50,7 @@ export default {
                                 },
                                 on: {
                                     click: () => {
-                                        alert(123)
-                                    }
+                                        this.Router(params.index)                                    }
                                 }
                             }, '了解详情')
                         ])
@@ -95,6 +94,11 @@ export default {
                     view: '已查看'
                 }
             ]
+        }
+    },
+    methods: {
+        Router() {
+            this.$router.push({ path: `/details` })
         }
     }
 }
