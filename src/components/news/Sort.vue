@@ -14,7 +14,7 @@
         <div>
                 <div slot="title" class="ive-xin">新闻类别</div>
                 <div class="ive-but">
-                        <Button type="primary" size="large">添加</Button>
+                        <Button type="primary" size="large" @click="add()">添加</Button>
                 </div>
                 <Table :columns="columnsSort" :data="sortData"></Table>
         </div>
@@ -154,7 +154,7 @@ export default {
                                 }
                         })
                 },
-                add() {
+                add() {//添加
                         this.$Modal.confirm({
                                 title: '添加',
                                 closable: true,
@@ -165,6 +165,11 @@ export default {
                                                                 value: '',
                                                                 autofocus: true,
                                                                 placeholder: '请输入代码'
+                                                        },
+                                                        on: {
+                                                                input: (val) => {
+
+                                                                }
                                                         }
                                                 })
                                         ])
