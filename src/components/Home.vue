@@ -111,7 +111,7 @@
                                                 <router-link :to="{path:`/user`}" class="router-link">用户反馈</router-link>
                                                 </MenuItem>
                                                 <MenuItem name="3-4">
-                                                <router-link :to="{path:``}" class="router-link">用户账号</router-link>
+                                                <router-link :to="{path:`/text`}" class="router-link">用户账号</router-link>
                                                 </MenuItem>
                                                 <MenuItem name="3-5">
                                                 <router-link :to="{path:``}" class="router-link">全职简历</router-link>
@@ -143,7 +143,9 @@
                                         </Menu>
                                 </Header>
                                 <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
-                                        <router-view></router-view>
+                                        <Card>
+                                                <router-view></router-view>
+                                        </Card>
                                 </Content>
                         </Layout>
                 </Layout>

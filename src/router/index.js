@@ -8,46 +8,49 @@ import Baio from '@/components/news/Baio'
 import Page from '@/components/news/Page'
 import Sort from '@/components/news/Sort'
 import Details from '@/components/hage/Details'
-
-
+import Textbox from '@/components/news/Textbox'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      component: Home,
-      children: [{
-        path: '/team',
-        component: Team
-      },
-      {
-        path: '/feedback',
-        component: Feedback,
-      },
-      {
-        path: '/user',
-        component: User
-      },
-      {
-        path: '/baio',
-        component: Baio
-      },
-      {
-        path: '/page',
-        component: Page
-      },
-      {
-        path: '/sort',
-        component: Sort
-      },
-      {
-        path: '/details',
-        component: Details
-      }
-      ]
-    },
+        routes: [
+                {
+                        path: '/',
+                        component: Home,
+                        children: [{
+                                path: '/team',
+                                component: Team
+                        },
+                        {
+                                path: '/feedback',
+                                component: Feedback,
+                        },
+                        {
+                                path: '/user',
+                                component: User
+                        },
+                        {
+                                path: '/baio',
+                                component: Baio
+                        },
+                        {
+                                path: '/page',
+                                component: Page
+                        },
+                        {
+                                path: '/sort',
+                                component: Sort
+                        },
+                        {
+                                path: '/details',
+                                component: Details
+                        },
+                        {
+                                path: '/text',
+                                component: Textbox
+                        }
+                        ]
+                },
 
-  ]
+        ]
 })

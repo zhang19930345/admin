@@ -1,55 +1,46 @@
 <style lang="less">
-.lest{
-    font-size:20px;
-    font-weight: 600;
-    text-align: left;
-}
+        .lest{
+                font-size:20px;
+                font-weight: 600;
+                text-align: left;
+        }
 </style>
 <template>
         <div class="team_card">
-                <Card class="team-box">
-                        <div slot="title" class="lest">
-                                <Icon type="ios-people" size="26"></Icon>
-                                团队组建
+                <div slot="title" class="lest">
+                        <Icon type="ios-people" size="26"></Icon>
+                        团队组建
+                </div>
+                <Row :gutter="20" style="margin-bottom:15px;">
+                        <Col span="4">
+                        <Select placeholder="组建状态">
+                                <Option v-for="item in state" :value="item.value" :key="item.value" @on-change="changeState">{{item.label}}</Option>
+                        </Select>
+                        </Col>
+                        <Col span="4">
+                        <Select placeholder="时间状态">
+                                <Option v-for="item in seach" :value="item.value" :key="item.value">{{item.label}}</Option>
+                        </Select>
+                        </Col>
+                        <Col span="4">
+                        <Select v-model="model13" placeholder="请输入手机号码" filterable :remote-method="remoteMethod" :loading="loading1">
+                                <Option v-for="(option, index) in options1" :value="option.value" :key="index">{{option.label}}</Option>
+                        </Select>
+                        </Col>
+                </Row>
+                <Table border :columns="team" :data="datals"></Table>
+                <div style="margin: 10px;overflow: hidden">
+                        <div style="float: right;">
+                                <Page :total="100" :current="1" @on-change="changePage"></Page>
                         </div>
-                        <Row :gutter="20" style="margin-bottom:15px;">
-                                <Col span="8">
-                                <Select>
-                                        <Option v-for="item in state" :value="item.value" :key="item.value" @on-change="changeState">{{item.label}}</Option>
-                                </Select>
-                                </Col>
-                                <Col span="8">
-                                <Select>
-                                        <Option v-for="item in seach" :value="item.value" :key="item.value">{{item.label}}</Option>
-                                </Select>
-                                </Col>
-                                <Col span="8">
-                                <Select v-model="model13" placeholder="请输入手机号码" filterable :remote-method="remoteMethod1" :loading="loading1">
-                                        <Option v-for="(option, index) in options1" :value="option.value" :key="index">{{option.label}}</Option>
-                                </Select>
-                                </Col>
-                        </Row>
-                        <Table border :columns="team" :data="datals"></Table>
-                        <div style="margin: 10px;overflow: hidden">
-                                <div style="float: right;">
-                                        <Page :total="100" :current="1" @on-change="changePage"></Page>
-                                </div>
-                        </div>
-                </Card>
+                </div>
         </div>
 </template>
 <script>
 import expandRow from './Table.vue'
-import Modal from './Modal.vue'
 export default {
-        conponent: {
-                Modal
-        },
         data() {
                 return {
-                        v1: '',
-                        v2: "",
-                        v3: '',
                         datals: [
                                 {
                                         munber: 901,
@@ -89,6 +80,60 @@ export default {
                                 },
                                 {
                                         munber: 905,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59',
+                                        budget: '500￥'
+                                },
+                                {
+                                        munber: 901,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59',
+                                        budget: '500￥'
+                                },
+                                {
+                                        munber: 901,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59',
+                                        budget: '500￥'
+                                },
+                                {
+                                        munber: 901,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59',
+                                        budget: '500￥'
+                                },
+                                {
+                                        munber: 901,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59',
+                                        budget: '500￥'
+                                },
+                                {
+                                        munber: 901,
+                                        id: '北京红红火火有限科技公司',
+                                        contact: 15966668888,
+                                        requirements: 66,
+                                        place: '北京市海定区长白山顶',
+                                        time: '2017.12.13-10:59',
+                                        budget: '500￥'
+                                },
+                                {
+                                        munber: 901,
                                         id: '北京红红火火有限科技公司',
                                         contact: 15966668888,
                                         requirements: 66,
@@ -151,13 +196,12 @@ export default {
                                                 return h('div', [
                                                         h('Button', {
                                                                 props: {
-                                                                        type: 'error',
+                                                                        type: 'primary',
                                                                         size: 'small'
                                                                 },
                                                                 on: {
                                                                         click: () => {
-                                                                                //console.log(123)
-                                                                                this.Editor(params.index)
+                                                                                this.editor(params.index)
                                                                         }
                                                                 }
                                                         }, '编辑')
@@ -202,71 +246,42 @@ export default {
                         options1: [],
                 }
         },
-        created() {
-
-        },
         methods: {
-                remove(index) {
-                        //this.datals.splice(index, 1);
-                        //this.$router.push({ path: `/deatails` })
+                changePage() {//分页效果函数
+                        this.datals = this.team
+                },
+                changeState() {//搜索
 
                 },
-                changePage() {
-                        alert(123)
+                remoteMethod() {//搜索
+
                 },
-                changeState() {
-                        alert(123)
-                },
-                remoteMethod1(query) {
-                        if (query !== '') {
-                                this.loading1 = true;
-                                setTimeout(() => {
-                                        this.loading1 = false;
-                                        const list = this.list.map(item => {
-                                                return {
-                                                        value: item,
-                                                        label: item
-                                                };
-                                        });
-                                        this.options1 = list.filter(item => item.label.toLowerCase().indexOf(query.toLowerCase()) > -1);
-                                }, 200);
-                        } else {
-                                this.options1 = [];
-                        }
-                },
-                Editor(index) {
+                editor(index) {//动态效果编辑
                         this.$Modal.confirm({
-                                scrollable: true,
-                                okText: '保存',
+                                title: '编辑',
+                                transfer: false,
+                                closable: true,
                                 render: (h) => {
-                                        return h(Modal, {
-                                                props: {},
-                                                on: {
-                                                        value1: (value1) => {
-                                                                this.v1 = value1
+                                        return h('div', [
+                                                h('Input', {
+                                                        props: {
+                                                                value: this.datals[index].id,
+                                                                autofocus: true,
+                                                                placeholder: 'bajjd'
                                                         },
-                                                        value2: (value2) => {
-                                                                this.v2 = value2
+                                                        style: {
+                                                                marginTop: '20px'
                                                         },
-                                                        value3: (value3) => {
-                                                                this.v3 = value3
+                                                        on: {
+                                                                input: (val) => {
+                                                                        this.datals[index].id = val
+                                                                }
                                                         }
-                                                },
-                                                onOk: () => {
-                                                        if (this.v1 == '' || this.v2 == '') {
-                                                                this.$Message.error('信息填写不完整!')
-                                                        }
-                                                        const msg = this.$Message.loading({
-                                                                content: '正在保存..',
-                                                                duration: 0
-                                                        })
-                                                        this.saveLink(msg)
-                                                }
-                                        })
+                                                })
+                                        ])
                                 }
                         })
                 }
-
         },
         components: { expandRow }
 }
