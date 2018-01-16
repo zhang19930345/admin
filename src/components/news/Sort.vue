@@ -154,7 +154,7 @@ export default {
                                 }
                         })
                 },
-                add() {//添加
+                add(index) {//添加
                         this.$Modal.confirm({
                                 title: '添加',
                                 closable: true,
@@ -168,7 +168,9 @@ export default {
                                                         },
                                                         on: {
                                                                 input: (val) => {
-
+                                                                        this.sortData.push({
+                                                                                val
+                                                                        })
                                                                 }
                                                         }
                                                 })
