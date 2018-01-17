@@ -146,7 +146,7 @@ export default {
                                                         },
                                                         on: {
                                                                 input: (val) => {
-                                                                        this.sortData[index].dm = val
+                                                                        this.sortData[index].bm = val
                                                                 }
                                                         }
                                                 })
@@ -164,13 +164,14 @@ export default {
                                                         props: {
                                                                 value: '',
                                                                 autofocus: true,
-                                                                placeholder: '请输入代码'
+                                                                placeholder: '请输入编码格式'
+                                                        },
+                                                        style: {
+                                                                marginTop: '10px'
                                                         },
                                                         on: {
                                                                 input: (val) => {
-                                                                        this.sortData.push({
-                                                                                val
-                                                                        })
+                                                                        this.sortData.push(val)
                                                                 }
                                                         }
                                                 })

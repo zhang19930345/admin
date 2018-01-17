@@ -2,26 +2,39 @@
 
 </style>
 <template>
-        <div>
-                <Button @click="data">Normal</Button>
+        <div class="ive-box">
+                <textarea name="" id="textarea"></textarea>
         </div>
 </template>
 <script>
+import tinymce from 'tinymce'
 export default {
-        methods: {
-                data() {
-                        this.$Modal.info({
-                                title: '235',
-                                content: '<p>Content of dialog</p><p>Content of dialog</p>',
-                                onOk: () => {
-                                        this.$Message.info('321');
-                                },
-                                /*   onCancel: () => {
-                                      this.$Message.info('123');
-                                  } */
-                        });
+        name: 'Page',
+        data() {
+                return {
                 }
+        },
+        methods: {
+                init() {
+                        this.$nextTick(() => {
+                                tinymce.init({
+                                        selector: '#textarea',
+                                        language: 'zh_CN',//语言
+                                        menubar: 'edit insert view format table tools',
+                                        plugins: [//插件
+                                                'advlist autolink lists link image charmap print preview hr anchor pagebreak imagetools',
+                                                'searchreplace visualblocks visualchars code fullpage',
+                                                'insertdatetime media nonbreaking save table contextmenu directionality',
+                                                'emoticons paste textcolor colorpicker textpattern imagetools codesample'
+                                        ],
 
-        }
+                                })
+                        })
+                }
+        },
+        mounted() {
+                this.init();
+        },
+        components: { tinymce }
 }
 </script>

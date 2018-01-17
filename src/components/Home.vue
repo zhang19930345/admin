@@ -117,7 +117,7 @@
                                                 <router-link :to="{path:``}" class="router-link">全职简历</router-link>
                                                 </MenuItem>
                                                 <MenuItem name="3-6">
-                                                <router-link :to="{path:``}" class="router-link">兼职简历</router-link>
+                                                <router-link :to="{path:`/textarea`}" class="router-link">兼职简历</router-link>
                                                 </MenuItem>
                                         </Submenu>
                                         <Submenu name="4">
