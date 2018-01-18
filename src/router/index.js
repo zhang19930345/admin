@@ -9,7 +9,7 @@ import Page from '@/components/news/Page'
 import Sort from '@/components/news/Sort'
 import Details from '@/components/hage/Details'
 import Textbox from '@/components/news/Textbox'
-import Publish from '@/components/news/Publish'
+
 Vue.use(Router)
 
 export default new Router({
@@ -48,10 +48,6 @@ export default new Router({
                         {
                                 path: '/text',
                                 component: Textbox
-                        },
-                        {
-                                path: '/textarea',
-                                component: Publish
                         }
                         ]
                 },
