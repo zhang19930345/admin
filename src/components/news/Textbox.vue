@@ -5,7 +5,10 @@
 </style>
 <template>
         <div class="ive_box">
-                <div slot="title" class="ive_title">添加新闻</div>
+                <div slot="title" class="ive_title">
+                        <p></p>
+                        添加新闻
+                </div>
                 <Form :label-width="80">
                         <FormItem label="标题">
                                 <Col span="12">
@@ -38,51 +41,28 @@
                                 </Col>
                         </FormItem>
                         <FormItem label="内容">
-                                <textarea id="textarea"></textarea>
+                                <Col span="12">
+                                <div id="textarea"></div>
+                                </Col>
                         </FormItem>
                         <FormItem>
                                 <Button type="primary">保存</Button>
                                 <Button type="ghost" style="margin-left: 8px">清除</Button>
                         </FormItem>
                 </Form>
+                <editor api-key="API_KEY" :init="{plugins: 'wordcount'}"></editor>
         </div>
 </template>
 <script>
-
 export default {
         mounted() {
-                this.$nextTick(() => {
-                        tinymce.init({
-                                selector: "#textarea",
-                                language: 'zh_CN.GB2312',
-                                height: 300,
-                                menubar: 'edit insert view format table tools',
-                                plugins: [
-                                        'advlist autolink lists link image charmap print preview hr anchor pagebreak imagetools',
-                                        'searchreplace visualblocks visualchars code fullpage',
-                                        'insertdatetime media nonbreaking save table contextmenu directionality',
-                                        'emoticons paste textcolor colorpicker textpattern imagetools codesample'
-                                ],
-                                toolbar1: ' newnote print preview | undo redo | insert | styleselect | forecolor backcolor bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image emoticons media codesample',
-                                autosave_interval: '20s',
-                                image_advtab: true,
-                                table_default_styles: {
-                                        width: '100%',
-                                        borderCollapse: 'collapse'
-                                },
-                                setup: function (editor) {
-                                        editor.on('init', function (e) {
-                                                vm.spinShow = false;
-                                                if (localStorage.editorContent) {
-                                                        tinymce.get('tinymceEditer').setContent(localStorage.editorContent);
-                                                }
-                                        });
-                                        editor.on('keydown', function (e) {
-                                                localStorage.editorContent = tinymce.get('tinymceEditer').getContent();
-                                        });
-                                }
-                        })
+                tinymce.init({
+                        selector: '#textarea',
+                        language: 'zh_CN.GB2312'
                 })
+        },
+        destroyed() {
+                tinymce.get('textarea').destroy();
         }
 }
 </script>

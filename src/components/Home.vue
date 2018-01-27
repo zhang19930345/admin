@@ -84,16 +84,17 @@
                                         <Submenu name="2">
                                                 <template slot="title">
                                                         <Icon type="ios-world-outline"></Icon>
-                                                        <router-link :to="{path:``}" class="router-link">新闻管理</router-link>
+                                                        新闻管理
                                                 </template>
                                                 <MenuItem name="2-1">
-                                                <router-link :to="{path:`/baio`}" class="router-link">新闻列表</router-link>
+                                                <router-link :to="{path:'/baio'}" class="router-link">新闻列表</router-link>
                                                 </MenuItem>
                                                 <MenuItem name="2-2">
-                                                <router-link :to="{path:`/sort`}" class="router-link">新闻类别</router-link>
+                                                <!-- {path: '/detail/' + this.$route.params.id} -->
+                                                <router-link :to="{path:'/sort'}" class="router-link">新闻类别</router-link>
                                                 </MenuItem>
                                                 <MenuItem name="2-3">
-                                                <router-link :to="{path:`/page`}" class="router-link">单页面管理</router-link>
+                                                <router-link :to="{path:`/page`}" class="router-link">活动页管理</router-link>
                                                 </MenuItem>
                                         </Submenu>
                                         <Submenu name="3">
